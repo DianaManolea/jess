@@ -1,0 +1,26 @@
+(deftemplate Arca (slot anim) (slot sex) (slot inaltime))
+
+(assert (Arca (anim soarece) (sex M) (inaltime 0.1)))
+(assert (Arca (anim soarece) (sex F) (inaltime 0.1)))
+(assert (Arca (anim veverita) (sex M) (inaltime 0.3)))
+(assert (Arca (anim veverita) (sex F) (inaltime 0.3)))
+(assert (Arca (anim pisica) (sex M) (inaltime 0.8)))
+(assert (Arca (anim pisica) (sex F) (inaltime 0.8)))
+(assert (Arca (anim caine) (sex M) (inaltime 1.4)))
+(assert (Arca (anim caine) (sex F) (inaltime 1.4)))
+(assert (Arca (anim vaca) (sex M) (inaltime 2.4)))
+(assert (Arca (anim vaca) (sex F) (inaltime 2.4)))
+(assert (Arca (anim elefant) (sex M) (inaltime 5.9)))
+(assert (Arca (anim elefant) (sex M) (inaltime 5.9)))
+(facts)
+
+(defrule aranjeaza
+    ?in<- (Arca (inaltime))
+    ?in2<- (Arca (inaltime))
+    =>
+    (if (> ?in2 ?in)
+        then (replace$ ?in ?in2)
+        )
+    (printout t "dupa inaltime: " ?in crlf)
+    )
+(run)
